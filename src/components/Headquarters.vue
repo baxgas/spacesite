@@ -74,6 +74,18 @@ export default {
     color: black;
 }
 
+@media only screen and (max-width : 768px) {
+
+.map {
+    width: 50%;
+}
+
+.headinfos {
+    width: 40%;
+}
+
+/* end 480 */
+}
 
 @media (max-width: 480px) {
 
