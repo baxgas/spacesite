@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,400i,700,700i&display=swap');
+
+body {
+    margin:0;
+    padding:0;
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    background: white;
+    color: black;
+}
+
+a {
+    -o-transition:0.5s;
+    -ms-transition:0.5s;
+    -moz-transition:0.5s;
+    -webkit-transition:0.5s;
+    transition:0.5s;
+}
+
+#app {
+
+}
+
+section {
+    margin-top: 50px;
+}
+
+section article {
+    width: 95%;
+    max-width: 750px;
+    margin: 6em auto 2em;
+}
+
+section article h2 {
+    font-size: 2em;
+    margin: 1.5em 0;
+}
+
+@media (max-width: 480px) {
+
+section article h2 {
+    margin-bottom: 1em;
+}    
+    
+/* end 480 */
+}
