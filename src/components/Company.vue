@@ -3,9 +3,9 @@
         <h2 class="subtitle">Company</h2>
 
         <div class="companycards">
-            <div class="card ceo">
-                <img src="../assets/elon_musk.jpg">
-                <b>{{ ceo }}</b>
+            <div class="card ceo" @click="save(i)">
+                <img src="../assets/elon_musk.jpg"  >
+                <b>{{ changeceo ? changeceo : ceo }}</b>
                 <span class="compinfos position">CEO</span>
             </div>
             <div class="card coo">
@@ -29,7 +29,7 @@
             <div class="card-elem">
                 <img src="../assets/icon-1.png">
                 <b>Employees:</b> 
-                <span class="compinfos infoabout">{{ employees }}</span>
+                <span class="compinfos infoabout">{{ changeEmployees }}</span>
             </div>
             <div class="card-elem">
                 <img src="../assets/icon-2.png">
@@ -48,16 +48,51 @@
 
 <script>
 export default {
-    name: "Companypart",
-    props: {
-        ceo: String,
-        cto: String,
-        coo: String,
-        cto_propulsion: String,
-        founder: String,
-        founded: Number,
-        employees: Number,
+name: "Companypart",
+props: {
+    ceo: String,
+    cto: String,
+    coo: String,
+    cto_propulsion: String,
+    founder: String,
+    founded: Number,
+    employees: Number,
+    nameArray: Array,
+},
+data: function (){
+    return {
+        changeceo: this.ceo,
+        i: 0
     }
+},
+computed: {
+    members() {
+        return this.$store.state.members;
+    },
+    changeEmployees: function() {
+        return this.$store.state.employees + this.employees;
+    }
+},
+methods: {
+    save(i) {
+        i = this.i;
+        let num = 1;
+        let nameArray = this.$store.state.members;
+        nameArray[i].name = `${this.$store.state.members[i].name}`;
+        i !== this.$store.state.members.length - 1 ? this.i++ : this.i = 0;
+        
+        this.$store.commit("mutateMember", nameArray[num]);
+        this.changeceo = nameArray[i].name;
+        this.$store.commit("employeeNum", num);
+        // this.changeEmployees = this.employees + num;
+        num++;
+        // console.log( this.employe.changeEmployees );
+        // console.log( nameArray );
+        // console.log( i );          
+
+    }
+}
+
 }
 </script>
 
